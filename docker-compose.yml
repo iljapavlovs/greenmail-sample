@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  mail:
+    image: greenmail/standalone:1.5.14
+    environment:
+      GREENMAIL_OPTS: >-
+        -Dgreenmail.setup.test.all
+        -Dgreenmail.hostname=0.0.0.0
+        -Dgreenmail.users=domainer:password
+        -Dgreenmail.verbose
+        -Dgreenmail.auth.disabled
+    ports:
+      - "3025:3025" # SMTP
+      - "3143:3143" # IMAP
+      - "3465:3465" # SMTPs
+      - "3993:3993" # IMAPs
+      - "3110:3110" # pop3
+      - "3995:3995" # pop3s
+
+# Expose ports:
+# - smtp  : 3025
+# - smtps : 3465
+# - pop3  : 3110
+# - pop3s : 3995
+# - imap  : 3143
+# - imaps : 3993
